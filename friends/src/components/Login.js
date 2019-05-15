@@ -6,21 +6,26 @@ class Login extends React.Component{
 
     handleLogin = (event) => {
         event.preventDefault()
-        console.log("firing")
+        // console.log("firing")
         this.props.login()
     }
 
     render() {
         return (
-            <>
-                <p>LOGIN</p>
-                <form>
-                    <label></label>
-                    <input placeholder='Username'></input>
-                    <input placeholder='Password'></input>
-                    <button onClick={this.handleLogin}>Log In</button>
-                </form>
-            </>
+            <div>
+                {this.props.loggingIn ? (<div><span>Logging In...</span></div>):
+                    (<div>
+                        <p>LOGIN</p>
+                        <form>
+                            <label></label>
+                            <input placeholder='Username'></input>
+                            <input placeholder='Password'></input>
+                            <button onClick={this.handleLogin}>Log In</button>
+                        </form>
+                    </div>
+                    )
+                }
+            </div>
         )
     }
 }

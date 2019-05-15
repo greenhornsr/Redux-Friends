@@ -1,4 +1,4 @@
-import { LOGIN_START } from '../actions';
+import { LOGIN_START, LOGGING_IN } from '../actions';
 
 const initialState = {
     friends: [],
@@ -16,6 +16,11 @@ export default function reducer(state = initialState, action){
         return {
             ...state,
             loggingIn: true,
+        }
+        case LOGGING_IN:
+        return {
+            ...state, 
+            loggingIn: false,
         }
         default:
         return state;
