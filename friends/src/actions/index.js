@@ -5,13 +5,13 @@ import { axiosWithAuth } from '../axiosWithAuth';
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
-export const login = () => dispatch => {
+export const login = (creds) => dispatch => {
     dispatch({type: LOGIN_START });
-    const creds = {
-        username: 'Lambda School', 
-        password: 'i<3Lambd4',
-    }
-    axios
+    // const creds = {
+    //     username: 'Lambda School', 
+    //     password: 'i<3Lambd4',
+    // }
+    return axios
     .post('http://localhost:5000/api/login', creds)
     .then(res => {
         // console.log(res)
@@ -32,7 +32,7 @@ export const getData = () => dispatch => {
     .then(res => {
         console.log(res);
         dispatch({ type: FETCH_FRIENDS_SUCCESS, payload: res.data })
+        localStorage.clear();
     })
     .catch(err => {console.log(err)})
-    // localStorage.clear();
 }

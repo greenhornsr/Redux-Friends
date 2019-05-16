@@ -17,7 +17,7 @@ function App() {
         </section>
         <section className="component-routes">
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/friendslist" component={FriendsList}  />
+          <PrivateRoute exact path="/friendslist" component={FriendsList}  />
         </section>
       </div>
     </>

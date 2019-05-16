@@ -5,18 +5,27 @@ import {connect} from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component{
+        state = {
+            username: '',
+            password: '',
+        }
+
+    handleChange = (event) => {
+        this.setState({
+            ...this.state,
+            [event.target.name]: event.target.value
+        })
+    }
 
     handleLogin = (event) => {
         event.preventDefault()
         // console.log("firing")
-        this.props.login()
+        this.props.login(this.state).then(() => {
+            return <Redirect to="/friendslist" />
+        })
     }
 
     render() {
-        if(this.props.loggingIn === true) {
-            return (<Redirect to="/friendslist" />)
-        }
-
         return (
             <div>
                 {this.props.loggingIn ? (<div><span>Logging In...</span></div>):
@@ -24,8 +33,8 @@ class Login extends React.Component{
                         <p>LOGIN</p>
                         <form>
                             <label></label>
-                            <input placeholder='Username'></input>
-                            <input placeholder='Password'></input>
+                            <input onChange={this.handleChange} type='text' name='username' value={this.state.username} placeholder='Username'></input>
+                            <input onChange={this.handleChange} type='password' name='password' value={this.state.password} placeholder='Password'></input>
                             <button onClick={this.handleLogin}>Log In</button>
                         </form>
                     </div>
