@@ -13,6 +13,10 @@ class Login extends React.Component{
     }
 
     render() {
+        if(this.props.loggingIn === true) {
+            return (<Redirect to="/friendslist" />)
+        }
+
         return (
             <div>
                 {this.props.loggingIn ? (<div><span>Logging In...</span></div>):
