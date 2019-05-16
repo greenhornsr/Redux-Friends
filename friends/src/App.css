@@ -31,3 +31,27 @@
     transform: rotate(360deg);
   }
 }
+
+/* my CSS */
+.navs{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  /* border: 1px solid red; */
+}
+
+.navs a{
+  width: 5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-decoration: none;
+  color: blue;
+}
+
+.navs a.active{
+  /* text-decoration: underline solid red; */
+  font-weight: bolder;
+  color: red;
+  background-color: silver;
+}
