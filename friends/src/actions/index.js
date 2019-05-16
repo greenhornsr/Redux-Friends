@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const LOGIN_START = 'LOGIN_START';
-export const LOGGING_IN = 'LOGGING_IN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export const login = () => dispatch => {
     dispatch({type: LOGIN_START });
@@ -12,9 +12,9 @@ export const login = () => dispatch => {
     axios
     .post('http://localhost:5000/api/login', creds)
     .then(res => {
-        dispatch({type: LOGGING_IN, payload: res.data.payload})
+        console.log(res)
+        dispatch({type: LOGIN_SUCCESS, payload: res.data.payload})
         localStorage.setItem('loginToken', res.data.payload)
     })
     .catch(err => {console.log(err)})
-
 }

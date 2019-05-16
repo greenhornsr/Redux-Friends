@@ -2,6 +2,8 @@ import React from 'react';
 import {login} from '../actions';
 import {connect} from 'react-redux';
 
+import { Redirect } from 'react-router-dom';
+
 class Login extends React.Component{
 
     handleLogin = (event) => {
