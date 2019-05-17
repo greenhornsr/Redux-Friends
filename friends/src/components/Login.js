@@ -3,7 +3,7 @@ import {login} from '../actions';
 import {connect} from 'react-redux';
 import Loader from 'react-loader-spinner';
 
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component{
         state = {
@@ -22,7 +22,8 @@ class Login extends React.Component{
         event.preventDefault()
         // console.log("firing")
         this.props.login(this.state).then(() => {
-            return <Redirect to="/friendslist" />
+            this.props.history.push("/friendslist");
+            // return <Redirect to="/friendslist" />
         })
     }
 

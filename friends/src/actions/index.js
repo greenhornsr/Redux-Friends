@@ -4,8 +4,10 @@ import { axiosWithAuth } from '../axiosWithAuth';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const login = (creds) => dispatch => {
+    console.log(creds)
     dispatch({type: LOGIN_START });
     // const creds = {
     //     username: 'Lambda School', 
@@ -15,10 +17,13 @@ export const login = (creds) => dispatch => {
     .post('http://localhost:5000/api/login', creds)
     .then(res => {
         // console.log(res)
-        dispatch({type: LOGIN_SUCCESS, payload: res.data.payload})
         localStorage.setItem('preciousToken', res.data.payload)
+        dispatch({type: LOGIN_SUCCESS, payload: res.data.payload})
     })
-    .catch(err => {console.log(err)})
+    .catch(err => {
+        console.log(err);
+        dispatch({ type: LOGIN_FAILURE, payload: err.response.status })
+    })
 }
 
 export const FETCH_FRIENDS_START = 'FETCH_FRIENDS_START';
